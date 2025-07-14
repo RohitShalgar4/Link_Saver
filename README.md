@@ -1,119 +1,149 @@
-# Link Saver
+# Link Saver 🔗  
+**A Modern Bookmark Manager with Summarization**
 
-A modern, secure, and beautiful bookmark manager built with React, Tailwind CSS, and IndexedDB. Save, organize, and summarize your favorite links with drag-and-drop reordering, dark mode, and more—all in your browser.
-
----
-
-## Features
-
-- **User Authentication**: Register and log in securely. Passwords are hashed with bcryptjs and never stored in plain text. Auth tokens are stored in cookies.
-- **Bookmark Management**: Add, view, search, and delete bookmarks. Each bookmark stores the page title, favicon, OpenGraph tags, and a summary (via Jina AI API).
-- **Drag-and-Drop Reordering**: Easily reorder your bookmarks with a visible drag handle. Order is persisted per user.
-- **Responsive & Accessible UI**: Fully responsive design with Tailwind CSS, supporting both light and dark mode.
-- **Dark Mode**: Toggle dark mode from the header. Theme preference is saved in IndexedDB and respected on all pages.
-- **Persistent Storage**: All data (users, bookmarks, theme) is stored in the browser using IndexedDB for privacy and offline support.
-- **OpenGraph Metadata**: Automatically fetches and displays OpenGraph tags (title, description, image, etc) for each bookmark.
-- **Summarization**: Each bookmark is summarized using the Jina AI API and the summary is shown in the card.
+Link Saver is a secure, full-featured bookmark management web application built with React and IndexedDB. It enables users to save, organize, summarize, and reorder their favorite links—right from the browser. Featuring drag-and-drop reordering, dark mode, and role-based authentication, it’s designed for productivity and privacy.
 
 ---
 
-## Tech Stack
-
-- **React 18** (functional components, hooks)
-- **Tailwind CSS** (utility-first styling, dark mode)
-- **IndexedDB** (persistent browser storage)
-- **bcryptjs** (password hashing)
-- **js-cookie** (auth token storage)
-- **react-dnd** (drag-and-drop)
-- **Jina AI API** (bookmark summarization)
-- **Vite** (fast dev/build tooling)
-
----
-
-## Getting Started
-
-### Prerequisites
-- Node.js (v16+ recommended)
-- npm
-
-### Installation
-
-1. **Install dependencies**
-   ```sh
-   cd frontend
-   npm install
-   ```
-
-2. **Start the development server**
-   ```sh
-   npm run dev
-   ```
-   The app will be available at [http://localhost:5173](http://localhost:5173) by default.
-
-3. **Build for production**
-   ```sh
-   npm run build
-   ```
+## 📌 Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
+- [Screenshots](#screenshots)
+- [Author](#author)
+- [Security & Privacy](#security--privacy)
+- [Customization](#customization)
 
 ---
 
-## Usage
+## ✨ Features
 
-### Register & Login
-- Register with your name, email, and password (min 6 chars). Passwords are hashed and never stored in plain text.
-- Log in with your email and password. Auth tokens are stored in cookies for security.
-
-### Add Bookmarks
-- Enter a URL in the "Add New Bookmark" form.
-- The app fetches the page title, favicon, OpenGraph tags, and a summary (via Jina AI API).
-- Bookmarks are displayed as cards with all metadata and summary.
-
-### Drag-and-Drop Reordering
-- Use the ☰ handle (or drag anywhere on the card) to reorder bookmarks.
-- The new order is saved and persists per user.
-- Drag-and-drop is disabled while searching.
-
-### Search & Delete
-- Use the search box to filter bookmarks by title or URL.
-- Click the trash icon to delete a bookmark (confirmation required).
-
-### Dark Mode
-- Toggle dark/light mode from the header. Theme is saved and applied everywhere.
+- 🔐 **Authentication**: Secure registration and login with password hashing (`bcryptjs`) and JWT token management using cookies
+- 🔖 **Bookmark Management**: Add, view, search, and delete bookmarks with metadata like title, favicon, and OpenGraph tags
+- 📑 **AI Summarization**: Automatically summarizes bookmarked content via **Jina AI API**
+- 🧲 **Drag-and-Drop Reordering**: Reorder bookmarks with `react-dnd`, and persist their order locally per user
+- 🌙 **Dark Mode**: Toggle light/dark mode, with preferences stored in **IndexedDB**
+- 📱 **Responsive UI**: Tailwind CSS ensures mobile-first, clean design
+- 🛡 **No Server-Side Storage**: All user data remains on the client for maximum privacy
 
 ---
 
-## Project Structure
+## 🛠 Tech Stack
 
-- `src/contexts/AuthContext.jsx` — Auth logic, context, and provider
-- `src/utils/auth.js` — Auth helpers (token, password hashing)
-- `src/utils/bookmarks.js` — Bookmark CRUD and order persistence
-- `src/utils/idb.js` — Minimal IndexedDB wrapper
-- `src/utils/urlParser.js` — Metadata extraction (title, favicon, OpenGraph)
-- `src/components/BookmarkForm.jsx` — Add bookmark form
-- `src/components/BookmarkCard.jsx` — Bookmark card UI
-- `src/components/Header.jsx` — Header, dark mode toggle, user/logout
-- `src/pages/Dashboard.jsx` — Main dashboard, drag-and-drop, search
-- `src/pages/Login.jsx` — Login page
-- `src/pages/Register.jsx` — Registration page
-- `src/components/ProtectedRoute.jsx` — Route protection
-- `src/components/Router.jsx` — Simple router
+**Frontend**
+- React.js 18 (Hooks, Functional Components)
+- Tailwind CSS
+- Vite
 
----
+**Storage**
+- IndexedDB (via a minimal wrapper)
+- js-cookie (for token handling)
 
-## Security & Privacy
-- All data is stored locally in your browser (IndexedDB, cookies).
-- Passwords are hashed with bcryptjs before storage.
-- No data is sent to a backend server (except for bookmark summarization via Jina AI API).
+**Authentication**
+- bcryptjs (password hashing)
+- JWT-based client authentication
+
+**Other Libraries**
+- react-dnd (drag-and-drop functionality)
+- Jina AI API (content summarization)
+- OpenGraph Scraper (custom utility for metadata)
 
 ---
 
-## Customization
-- **Theming**: Easily customize Tailwind config for your brand.
-- **Storage**: Swap IndexedDB for another storage if needed.
-- **API**: Replace Jina AI with your own summarization endpoint.
+## 🚀 Installation
 
----
+```bash
+# Clone the repository
+git clone https://github.com/RohitShalgar4/Link_Saver.git
+cd Link_Saver
 
-## License
+# Install dependencies
+npm install
 
-MIT 
+# Start development server
+npm run dev
+```
+
+## 🎮 Usage 
+
+- Register/Login with a name, email, and password (min 6 characters)
+
+- Add bookmarks via URL; metadata and summaries are fetched automatically
+
+- Reorder bookmarks with drag-and-drop (drag handle ☰)
+
+- Search bookmarks by title or URL
+
+- Delete bookmarks with confirmation
+
+- Toggle Dark Mode from the header
+
+- Theme and bookmarks persist in local storage (IndexedDB)
+
+## 📁 Folder Structure
+
+```bash
+link-saver/
+│
+├── src/
+│   ├── components/
+│   │   ├── BookmarkCard.jsx
+│   │   ├── BookmarkForm.jsx
+│   │   ├── Header.jsx
+│   │   ├── ProtectedRoute.jsx
+│   │   └── Router.jsx
+│   ├── pages/
+│   │   ├── Dashboard.jsx
+│   │   ├── Login.jsx
+│   │   └── Register.jsx
+│   ├── contexts/
+│   │   └── AuthContext.jsx
+│   ├── utils/
+│   │   ├── auth.js
+│   │   ├── bookmarks.js
+│   │   ├── idb.js
+│   │   └── urlParser.js
+│   └── App.jsx
+│
+└── README.md
+
+```
+
+## 📸 Screenshots
+
+### 🔐 Authentication Flow
+<img src="https://res.cloudinary.com/dt0ugqbrf/image/upload/v1752511126/Login_durljv.png" alt="Login" width="700"/>
+<img src="https://res.cloudinary.com/dt0ugqbrf/image/upload/v1752511127/Register_oum9so.png" alt="Register" width="700"/>
+
+### 🖥️ Main Interface
+<img src="https://res.cloudinary.com/dt0ugqbrf/image/upload/v1752511127/Add_Bookmark_wppnw6.png" alt="Add Bookmark" width="700"/>
+
+### 🧠 AI Summarization
+<img src="https://res.cloudinary.com/dt0ugqbrf/image/upload/v1752511127/Drag_n_Drop_h35qan.png" alt="AI Summarization" width="700"/>
+
+
+## 👨‍💻 Author
+
+- Rohit Shalgar
+- Email: rohitshalgar@example.com
+- GitHub: @RohitShalgar4
+
+## 🔒 Security & Privacy
+
+- Passwords are hashed before being stored locally using bcryptjs
+
+- Authentication tokens are handled with secure cookies
+
+- No server-side data storage — all data lives in the user's browser (IndexedDB)
+
+- The only outbound request is to the Jina AI API for summarization
+
+## 🛠️ Customization
+- 🎨 Branding: Tailwind CSS configuration can be customized for your brand's palette and layout
+
+- 🤖 Summarization API: Swap the Jina API with your own AI summarizer if needed
+
+- 💾 Storage: Easily replace IndexedDB with localStorage or a cloud-based solution
+
